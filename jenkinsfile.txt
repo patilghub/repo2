@@ -1,0 +1,23 @@
+pipeline {
+       agent any
+       environment {
+	PATH = "/usr/share/man/man1:$PATH"
+	}
+stages {
+  stage('checkout stage') {
+    steps {
+      echo "chcked"
+	git 'https://github.com/patilghub/java-example.git'
+    }
+  }
+
+  stage('build stage') {
+    steps {
+        sh "mvn clean install"
+    }
+  }
+}
+
+
+
+}
